@@ -6,22 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0755c9">
   <title>GLOBALEX - Global Marketplace</title>
+
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f3f7ff;
       color: #17243a;
     }
+
     header {
       background: #0755c9;
       color: white;
       padding: 20px;
       text-align: center;
     }
-    header h1 { margin: 0; font-size: 30px; }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
     header p { margin-bottom: 0; }
+
     nav {
       display: flex;
       justify-content: center;
@@ -30,32 +39,40 @@
       padding: 14px;
       background: white;
     }
+
     nav a {
       color: #0755c9;
       text-decoration: none;
       font-weight: bold;
     }
+
     .hero {
       text-align: center;
       padding: 45px 18px;
       background: linear-gradient(135deg, #0755c9, #1689e8);
       color: white;
     }
+
     .hero h2 { font-size: 28px; }
+
     .hero p { line-height: 1.6; }
+
     .search {
       display: flex;
       max-width: 520px;
       margin: 22px auto 0;
       gap: 8px;
     }
+
     input, select {
       padding: 13px;
       border: 1px solid #ccd7e8;
       border-radius: 8px;
       min-width: 0;
     }
+
     .search input { flex: 1; }
+
     button {
       background: #ffb629;
       color: #17243a;
@@ -65,13 +82,21 @@
       font-weight: bold;
       cursor: pointer;
     }
-    main { padding: 25px 16px; max-width: 1000px; margin: auto; }
+
+    main {
+      padding: 25px 16px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
     h2.section-title { color: #0755c9; }
+
     .categories {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
     }
+
     .category {
       background: white;
       border-radius: 12px;
@@ -80,7 +105,13 @@
       box-shadow: 0 2px 9px #0000000c;
       font-weight: bold;
     }
-    .category span { display: block; font-size: 30px; margin-bottom: 9px; }
+
+    .category span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 9px;
+    }
+
     .notice {
       background: white;
       padding: 22px;
@@ -88,6 +119,7 @@
       margin-top: 25px;
       line-height: 1.6;
     }
+
     footer {
       text-align: center;
       background: #102b50;
@@ -95,13 +127,21 @@
       padding: 22px;
       margin-top: 35px;
     }
+
+    #connectionStatus {
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
     @media(max-width: 480px) {
       .search { flex-direction: column; }
       .hero h2 { font-size: 23px; }
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <h1>GLOBALEX</h1>
     <p>One World. One Marketplace.</p>
@@ -117,16 +157,25 @@
   <section class="hero" id="home">
     <h2>Discover. Buy. Sell. Worldwide.</h2>
     <p>Connect with buyers and sellers around the world.</p>
+
     <div class="search">
-      <input id="searchInput" type="search" placeholder="What are you looking for?">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="What are you looking for?"
+      >
       <button onclick="searchItems()">Search</button>
     </div>
+
     <p id="searchMessage"></p>
+    <p id="connectionStatus">Connecting to GLOBALEX...</p>
   </section>
 
   <main>
+
     <section id="categories">
       <h2 class="section-title">Explore Categories</h2>
+
       <div class="categories">
         <div class="category"><span>🚗</span>Vehicles</div>
         <div class="category"><span>🏠</span>Real Estate</div>
@@ -139,15 +188,28 @@
 
     <section class="notice" id="sell">
       <h2 class="section-title">Start Selling on GLOBALEX</h2>
-      <p>Reach customers locally and internationally. Create your listing and grow your business.</p>
-      <button onclick="alert('Registration will be available soon!')">Post an Advertisement</button>
+
+      <p>
+        Reach customers locally and internationally.
+        Create your listing and grow your business.
+      </p>
+
+      <button onclick="alert('Registration will be available soon!')">
+        Post an Advertisement
+      </button>
     </section>
 
     <section class="notice" id="about">
       <h2 class="section-title">About GLOBALEX</h2>
-      <p>GLOBALEX is a global marketplace designed to connect people, businesses, buyers and sellers.</p>
+
+      <p>
+        GLOBALEX is a global marketplace designed to connect
+        people, businesses, buyers and sellers.
+      </p>
+
       <p>Disponible en English, Français et Malagasy.</p>
     </section>
+
   </main>
 
   <footer>
@@ -158,10 +220,31 @@
   <script>
     function searchItems() {
       const value = document.getElementById("searchInput").value.trim();
+
       document.getElementById("searchMessage").textContent =
-        value ? "Search for: " + value + " — Listings coming soon." :
-        "Please enter what you are looking for.";
+        value
+          ? "Search for: " + value + " — Listings coming soon."
+          : "Please enter what you are looking for.";
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://syvwwnkiyfgpmfmlqceo.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_q_9Fx5LyTCAUM7OzgudpBQ_u7Dk9LNu";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    document.getElementById("connectionStatus").textContent =
+      "GLOBALEX database connection initialized.";
+  </script>
+
 </body>
 </html>
