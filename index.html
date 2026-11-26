@@ -2,249 +2,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0755c9">
-  <title>GLOBALEX - Global Marketplace</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f7ff;
-      color: #17243a;
-    }
-
-    header {
-      background: #0755c9;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 30px;
-    }
-
-    header p { margin-bottom: 0; }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      padding: 14px;
-      background: white;
-    }
-
-    nav a {
-      color: #0755c9;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 45px 18px;
-      background: linear-gradient(135deg, #0755c9, #1689e8);
-      color: white;
-    }
-
-    .hero h2 { font-size: 28px; }
-
-    .hero p { line-height: 1.6; }
-
-    .search {
-      display: flex;
-      max-width: 520px;
-      margin: 22px auto 0;
-      gap: 8px;
-    }
-
-    input, select {
-      padding: 13px;
-      border: 1px solid #ccd7e8;
-      border-radius: 8px;
-      min-width: 0;
-    }
-
-    .search input { flex: 1; }
-
-    button {
-      background: #ffb629;
-      color: #17243a;
-      border: 0;
-      border-radius: 8px;
-      padding: 13px 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    main {
-      padding: 25px 16px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2.section-title { color: #0755c9; }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
-    }
-
-    .category {
-      background: white;
-      border-radius: 12px;
-      padding: 22px 10px;
-      text-align: center;
-      box-shadow: 0 2px 9px #0000000c;
-      font-weight: bold;
-    }
-
-    .category span {
-      display: block;
-      font-size: 30px;
-      margin-bottom: 9px;
-    }
-
-    .notice {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      margin-top: 25px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      background: #102b50;
-      color: white;
-      padding: 22px;
-      margin-top: 35px;
-    }
-
-    #connectionStatus {
-      font-size: 14px;
-      margin-top: 12px;
-    }
-
-    @media(max-width: 480px) {
-      .search { flex-direction: column; }
-      .hero h2 { font-size: 23px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0755c9">
+<title>GLOBALEX - Global Marketplace</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7ff;color:#17243a}
+header{background:#0755c9;color:white;text-align:center;padding:22px}
+header h1{margin:0}
+nav{background:white;padding:15px;text-align:center}
+nav a{margin:10px;color:#0755c9;text-decoration:none;font-weight:bold}
+.hero{text-align:center;padding:35px 15px;background:linear-gradient(135deg,#0755c9,#1689e8);color:white}
+main{max-width:650px;margin:auto;padding:18px}
+.card{background:white;padding:22px;border-radius:12px;margin:18px 0;box-shadow:0 2px 10px #0001}
+input,select{width:100%;padding:13px;margin:8px 0;border:1px solid #ccd7e8;border-radius:8px}
+button{padding:13px 18px;border:0;border-radius:8px;background:#ffb629;font-weight:bold;margin:6px 3px;cursor:pointer}
+.primary{background:#0755c9;color:white}
+.hidden{display:none}
+#message{padding:10px;line-height:1.5}
+footer{text-align:center;background:#102b50;color:white;padding:20px}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <h1>GLOBALEX</h1>
-    <p>One World. One Marketplace.</p>
-  </header>
+<header>
+<h1>GLOBALEX</h1>
+<p>One World. One Marketplace.</p>
+</header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#categories">Categories</a>
-    <a href="#sell">Sell</a>
-    <a href="#about">About</a>
-  </nav>
+<nav>
+<a href="#home">Home</a>
+<a href="#account">My Account</a>
+<a href="#about">About</a>
+</nav>
 
-  <section class="hero" id="home">
-    <h2>Discover. Buy. Sell. Worldwide.</h2>
-    <p>Connect with buyers and sellers around the world.</p>
+<section class="hero" id="home">
+<h2>Discover. Buy. Sell. Worldwide.</h2>
+<p>Connect with buyers and sellers around the world.</p>
+</section>
 
-    <div class="search">
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="What are you looking for?"
-      >
-      <button onclick="searchItems()">Search</button>
-    </div>
+<main>
+<section class="card" id="account">
+<h2>GLOBALEX Account</h2>
+<p>Create an account or sign in.</p>
 
-    <p id="searchMessage"></p>
-    <p id="connectionStatus">Connecting to GLOBALEX...</p>
-  </section>
+<div id="authForms">
+<h3>Create an account</h3>
+<input id="fullName" type="text" placeholder="Full name">
+<input id="email" type="email" placeholder="Email address">
+<input id="password" type="password" placeholder="Password (at least 6 characters)">
+<select id="accountType">
+<option value="buyer">Buyer / Mpividy</option>
+<option value="seller">Seller / Mpivarotra</option>
+</select>
+<button class="primary" onclick="signUp()">Create Account</button>
 
-  <main>
+<hr>
 
-    <section id="categories">
-      <h2 class="section-title">Explore Categories</h2>
+<h3>Already have an account?</h3>
+<input id="loginEmail" type="email" placeholder="Email address">
+<input id="loginPassword" type="password" placeholder="Password">
+<button onclick="signIn()">Sign In</button>
+</div>
 
-      <div class="categories">
-        <div class="category"><span>🚗</span>Vehicles</div>
-        <div class="category"><span>🏠</span>Real Estate</div>
-        <div class="category"><span>📱</span>Electronics</div>
-        <div class="category"><span>👕</span>Fashion</div>
-        <div class="category"><span>🛠️</span>Services</div>
-        <div class="category"><span>🏢</span>Business</div>
-      </div>
-    </section>
+<div id="userPanel" class="hidden">
+<h3>Welcome to GLOBALEX!</h3>
+<p id="userInfo"></p>
+<button onclick="signOut()">Sign Out</button>
+</div>
 
-    <section class="notice" id="sell">
-      <h2 class="section-title">Start Selling on GLOBALEX</h2>
+<p id="message" aria-live="polite"></p>
+</section>
 
-      <p>
-        Reach customers locally and internationally.
-        Create your listing and grow your business.
-      </p>
+<section class="card" id="about">
+<h2>About GLOBALEX</h2>
+<p>A global marketplace connecting buyers and sellers.</p>
+<p>Disponible en English, Français et Malagasy.</p>
+</section>
+</main>
 
-      <button onclick="alert('Registration will be available soon!')">
-        Post an Advertisement
-      </button>
-    </section>
+<footer>
+<strong>GLOBALEX</strong>
+<p>Global Marketplace © 2026</p>
+</footer>
 
-    <section class="notice" id="about">
-      <h2 class="section-title">About GLOBALEX</h2>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://syvwwnkiyfgpmfmlqceo.supabase.co";
+const SUPABASE_KEY = "sb_publishable_q_9Fx5LyTCAUM7OzgudpBQ_u7Dk9LNu";
 
-      <p>
-        GLOBALEX is a global marketplace designed to connect
-        people, businesses, buyers and sellers.
-      </p>
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-      <p>Disponible en English, Français et Malagasy.</p>
-    </section>
+const message = document.getElementById("message");
 
-  </main>
+function showMessage(text) {
+  message.textContent = text;
+}
 
-  <footer>
-    <strong>GLOBALEX</strong>
-    <p>Global Marketplace © 2026</p>
-  </footer>
+async function signUp() {
+  const name = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const type = document.getElementById("accountType").value;
 
-  <script>
-    function searchItems() {
-      const value = document.getElementById("searchInput").value.trim();
+  if (!name || !email || password.length < 6) {
+    showMessage("Enter your name, valid email and a password of at least 6 characters.");
+    return;
+  }
 
-      document.getElementById("searchMessage").textContent =
-        value
-          ? "Search for: " + value + " — Listings coming soon."
-          : "Please enter what you are looking for.";
+  showMessage("Creating your account...");
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+      data: {
+        full_name: name,
+        account_type: type
+      },
+      emailRedirectTo: "https://jimmy190795.github.io/GLOBALEX/"
     }
-  </script>
+  });
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  if (error) {
+    showMessage(error.message);
+    return;
+  }
 
-  <script>
-    const SUPABASE_URL =
-      "https://syvwwnkiyfgpmfmlqceo.supabase.co";
+  if (data.session) {
+    showMessage("Account created successfully!");
+    displayUser(data.user);
+  } else {
+    showMessage("Account created. Please check your email and confirm your registration.");
+  }
+}
 
-    const SUPABASE_KEY =
-      "sb_publishable_q_9Fx5LyTCAUM7OzgudpBQ_u7Dk9LNu";
+async function signIn() {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+  if (!email || !password) {
+    showMessage("Enter your email and password.");
+    return;
+  }
 
-    document.getElementById("connectionStatus").textContent =
-      "GLOBALEX database connection initialized.";
-  </script>
+  showMessage("Signing in...");
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    showMessage(error.message);
+    return;
+  }
+
+  showMessage("You are signed in!");
+  displayUser(data.user);
+}
+
+function displayUser(user) {
+  if (!user) return;
+
+  document.getElementById("authForms").classList.add("hidden");
+  document.getElementById("userPanel").classList.remove("hidden");
+
+  const name = user.user_metadata?.full_name || "GLOBALEX User";
+  const type = user.user_metadata?.account_type || "buyer";
+
+  document.getElementById("userInfo").textContent =
+    "Name: " + name + " | Email: " + user.email +
+    " | Account type: " + type;
+}
+
+async function signOut() {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    showMessage(error.message);
+    return;
+  }
+
+  document.getElementById("authForms").classList.remove("hidden");
+  document.getElementById("userPanel").classList.add("hidden");
+  showMessage("You have signed out.");
+}
+
+supabaseClient.auth.getSession().then(({ data, error }) => {
+  if (error) {
+    showMessage(error.message);
+    return;
+  }
+  if (data.session) displayUser(data.session.user);
+});
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (session) displayUser(session.user);
+});
+</script>
 
 </body>
 </html>
